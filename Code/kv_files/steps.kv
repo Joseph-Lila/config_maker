@@ -1,0 +1,23 @@
+<Steps>
+
+    list_items: list_items
+
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        MDToolbar:
+            title: "Steps"
+            md_bg_color: [200/255, 35/255, 100/255, 255/255]
+            elevation: 50
+            right_action_items: [["arrow-right", lambda x: print('arrow-right')], ["plus", lambda x: print('plus')], ["minus", lambda x: print('minus')], ["arrow-left", lambda x: root.go_back()]]
+
+        BoxLayout:
+            size_hint: 1, 1
+
+            ScrollView:
+
+                bar_color: 0, 0, 255, 1
+                bar_width: 12
+
+                MDList:
+                    id: list_items

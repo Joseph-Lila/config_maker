@@ -1,0 +1,59 @@
+<RoundedButton@Button>:
+    font_size: "30"
+    background_color: 0,0,0,0
+    color: 1, 0, 0, 1
+    canvas.before:
+        Color:
+            rgba: (128 / 255, 166 / 255, 255 / 255, .9) if self.state=='normal' else (0, .7, .7, 1)  # visual feedback of press
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [70,]
+
+
+<StartPage>:
+
+    MDBoxLayout:
+        orientation: 'vertical'
+
+        MDToolbar:
+            id: tool_bar
+            font_size: '30sp'
+            title: 'Use icons ----->'
+            md_bg_color: [200/255, 35/255, 100/255, 255/255]
+            elevation: 50
+            right_action_items: [["anchor", lambda x: app.task()], ["content-save", lambda x: root.save()], ["plus-circle", lambda x: root.create_new()], ["folder-open", lambda x: root.edit_one()],]
+
+        BoxLayout:
+            size_hint: 1, 1
+
+            GridLayout:
+                cols: 1
+                rows: None
+                padding: 80
+                spacing: 50
+
+                RoundedButton:
+                    id: Metadata
+                    # disabled: True if tool_bar.title == 'Use icons ----->' else False
+                    text: 'Metadata'
+                    on_press: root.manager.current = 'metadata'
+
+                RoundedButton:
+                    id: Steps
+                    # disabled: True if tool_bar.title == 'Use icons ----->' else False
+                    text: 'Steps'
+                    on_press: root.manager.current = 'steps'
+
+
+                RoundedButton:
+                    id: Notices
+                    # disabled: True if tool_bar.title == 'Use icons ----->' else False
+                    text: 'Notices'
+                    on_press: root.manager.current = 'notices'
+
+                RoundedButton:
+                    id: Scheme
+                    # disabled: True if tool_bar.title == 'Use icons ----->' else False
+                    text: 'Scheme'
+                    on_press: root.manager.current = 'scheme'
